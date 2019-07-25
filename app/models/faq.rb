@@ -1,4 +1,4 @@
-class Faq < ActiveRecord::base
+class Faq < ActiveRecord::Base
   validates_presence_of :question, :answer
 
   has_many :faq_hashtags
