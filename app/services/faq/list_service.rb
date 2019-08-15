@@ -11,25 +11,25 @@ module FaqModule
       elsif @action == "search_by_hashtag"
         faqs = []
         Faq.all.each do |faq|
-          faq.hashtags.each do |h|
-            faqs << faq if h.name == @query
+          faq.hashtags.each do |hashtag|
+            faqs << faq if hashtag.name == @query
           end
         end
       else
         faqs = Faq.all
       end
 
-      response = "*Questions and answers* \n\n"
+      response = "*Perguntas e Respostas* \n\n"
       faqs.each do |f|
         response += "*#{f.id}* - "
         response += "*#{f.question}*\n"
         response += "`#{f.answer}` \n"
         f.hashtags.each do |h|
-          response += "_##{h.name}_"
+          response += "_##{h.name}_ "
         end
         response += "\n\n"
       end
-      (faqs.count > 0)? response : "Nothing found"
+      (faqs.count > 0)? response : "Nada encontrado"
     end
   end
 end

@@ -1,37 +1,37 @@
-require '../../../spec/spec_helper.rb'
+require_relative './../../spec_helper.rb'
 
 describe FaqModule::CreateService do
   before do
     @question = FFaker::Lorem.sentence
     @answer = FFaker::Lorem.sentence
-    @hashtags = "#{FFaker::Lorem.word}, #{FFaker::Lorem.word},"
+    @hashtags = "#{FFaker::Lorem.word}, #{FFaker::Lorem.word}"
   end
 
-  describe '#Call' do
-    context 'Without hashtag params' do
-      it 'Will receive a error' do
+  describe '#call' do
+    context "Without hashtag params" do
+      it "will receive a error" do
         @createService = FaqModule::CreateService.new({"question" => @question, "answer" => @answer})
         response = @createService.call()
-        expect(response).to match("Hashtag Required")
+        expect(response).to match("Hashtag Obrigatória")
       end
     end
 
-    context "With valid params" do
+    context "With Valid params" do
       before do
-        @createService = FaqModule::CreateService.new({"question" => @question, "answer" => @answer, "Hashtags" => @hashtags})
+        @createService = FaqModule::CreateService.new({"question" => @question, "answer" => @answer, "hashtags" => @hashtags})
         @response = @createService.call()
       end
 
       it "Receive success message" do
-        expect(@response).to match("successfully created")
+        expect(@response).to match("Criado com sucesso")
       end
 
-      it "Question and answer id present in database" do
+      it "Question and anwser is present in database" do
         expect(Faq.last.question).to match(@question)
         expect(Faq.last.answer).to match(@answer)
       end
 
-      it "Hashtag are created" do
+      it "Hashtags are created" do
         expect(@hashtags.split(/[\s,]+/).first).to match(Hashtag.first.name)
         expect(@hashtags.split(/[\s,]+/).last).to match(Hashtag.last.name)
       end
