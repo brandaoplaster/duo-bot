@@ -1,18 +1,20 @@
 require 'json'
 require 'sinatra'
 require 'sinatra/activerecord'
-
 require './config/database'
-Dir["./app/models/*.rb"].each {|file| require file}
+
+Dir["./app/models/*.rb"].each {|file| require file }
+Dir["./app/services/**/*.rb"].each {|file| require file }
 
 class App < Sinatra::Base
+
   get '/' do
     'Hello world!'
   end
 
-  post 'webhook' do
+  post '/webhook' do
     request.body.rewind
-    result = JSON(request.body.read)["queryResult"]
+    result = JSON.parse(request.body.read)["queryResult"]
 
     if result["contexts"].present?
       response = InterpretService.call(result["action"], result["contexts"][0]["parameters"])
