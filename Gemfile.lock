@@ -35,7 +35,6 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rake (13.0.1)
     ripl (0.7.1)
       bond (~> 0.5.1)
     ripl-multi_line (0.3.1)
@@ -82,13 +81,14 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  activesupport (>= 5.2.4.3)
   database_cleaner
   factory_bot
   ffaker
   pg
   pg_search (~> 2.0.1)
+  rack (>= 2.1.4)
   rack-test
-  rake
   rspec
   sinatra
   sinatra-activerecord
