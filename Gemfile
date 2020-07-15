@@ -3,8 +3,9 @@ gem 'sinatra'
 gem "activerecord"
 gem "sinatra-activerecord"
 gem 'pg'
-gem 'rake'
+gem "rack", ">= 2.1.4"
 gem 'pg_search', '~> 2.0.1'
+gem "activesupport", ">= 5.2.4.3"
   
 group :development do
   gem "tux"
