@@ -12,7 +12,7 @@ module TranslationModule
     end
   
     def call
-      return "Serviço desativado..." if ENV['ACTIVE_SERVICE'].to_i == 1
+      return "Serviço desativado..." if ENV['NOT_ACTIVE_SERVICE'].to_i == 0
   
       result = validate_params
       return result if result.class == String
