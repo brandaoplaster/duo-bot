@@ -96,6 +96,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   activesupport (>= 5.2.4.3)
+  concurrent-ruby (~> 1.1, >= 1.1.6)
   database_cleaner
   dotenv (~> 2.1, >= 2.1.1)
   factory_bot
@@ -109,6 +110,9 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   tux
+
+RUBY VERSION
+   ruby 2.5.1p57
 
 BUNDLED WITH
    1.16.6
