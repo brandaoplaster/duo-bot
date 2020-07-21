@@ -1,8 +1,3 @@
-require 'uri'
-require 'json'
-require 'rest-client'
-require 'dotenv/load'
-
 module TranslationModule
   class TranslationService
 
