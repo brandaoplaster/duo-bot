@@ -17,14 +17,21 @@ GEM
     concurrent-ruby (1.1.6)
     database_cleaner (1.8.5)
     diff-lcs (1.4.4)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     ffaker (2.15.0)
-    i18n (1.8.3)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    i18n (1.8.4)
       concurrent-ruby (~> 1.0)
+    mime-types (2.99.3)
     minitest (5.14.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
+    netrc (0.11.0)
     pg (1.2.3)
     pg_search (2.0.1)
       activerecord (>= 4.2)
@@ -35,6 +42,10 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     ripl (0.7.1)
       bond (~> 0.5.1)
     ripl-multi_line (0.3.1)
@@ -74,6 +85,9 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
     zeitwerk (2.4.0)
 
 PLATFORMS
@@ -83,12 +97,14 @@ DEPENDENCIES
   activerecord
   activesupport (>= 5.2.4.3)
   database_cleaner
+  dotenv (~> 2.1, >= 2.1.1)
   factory_bot
   ffaker
   pg
   pg_search (~> 2.0.1)
   rack (>= 2.1.4)
   rack-test
+  rest-client (~> 1.8)
   rspec
   sinatra
   sinatra-activerecord
