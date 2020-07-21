@@ -1,5 +1,9 @@
 require 'sinatra/activerecord'
 require 'sinatra/activerecord/rake'
 require 'pg_search'
+require 'uri'
+require 'json'
+require 'rest-client'
+require 'dotenv/load'
 require './app'
 load "pg_search/tasks.rb"
