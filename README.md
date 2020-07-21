@@ -12,6 +12,7 @@ and get there easily when needed.
  - Survey of questions and answers
  - Search questions and answers by hashtag
  - List available commands
+ - Translation of sentences into other languages
 
 ## Prerequisites
 
@@ -19,6 +20,13 @@ and get there easily when needed.
 
 ## Configuration
 To change database settings **config/database.rb**
+
+Create a **.env** with the example.env file
+
+- URL_API= Translation api url
+- API_KEY= key for translation api
+- NOT_ACTIVE_SERVICE= Tells whether the translation feature is active,
+0 disabled and 1 enabled
 
 ## Getting Started
 To get the app running, run the following commands:
@@ -35,12 +43,17 @@ docker-compose run --rm webiste bundle install
 
 - Creating the database
 ```
-docker-compose run --rm website bundle exec rails db:create
+docker-compose run --rm website rake db:create
 ```
 
 - Generating migrate
 ```
-docker-compose run --rm website bundle exec rails db:migrate
+docker-compose run --rm website rake db:migrate
+```
+
+- Run the tests
+```  
+docker-compose run --rm website rspec
 ```
 
 - Up service
@@ -53,10 +66,12 @@ docker-compose up
  - Sinatra
  - Postgres
  - Dialogflow
+ - Cloud Translation API
  - Docker
  - Docker compose
 
-
+## challenge
+Implements sentence translation functionality into other languages.
 
 ## Authors
 
