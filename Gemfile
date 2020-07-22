@@ -7,7 +7,6 @@ gem 'pg'
 gem 'rack'
 gem 'pg_search', '~> 2.0.1'
 
-gem 'rest-client', '~> 1.8'
 gem 'dotenv', '~> 2.1', '>= 2.1.1'
   
 group :development do

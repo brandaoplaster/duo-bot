@@ -1,3 +1,7 @@
+require 'json'
+require 'net/http'
+require 'dotenv/load'
+
 module TranslationModule
   class TranslationService
 
@@ -18,12 +22,8 @@ module TranslationModule
       return "Não conheço este idioma!" if not check_language_exists
       return result if result.class == String
       
-      begin
-        response = create_url
-        return formart_message(response)
-      rescue RestClient::ExceptionWithResponse => exception
-        exception.response
-      end
+      response = create_url
+      return formart_message(response)
     end
   
     private
@@ -70,11 +70,10 @@ module TranslationModule
             "source" => @langs[@source]
           }
         end
-  
-        uri = URI.parse(url)
-  
-        request = RestClient.post(uri.to_s, data)
-        result = JSON.parse(request.body)
+
+        uri = URI(url)
+        res = Net::HTTP.post_form(uri, data)
+        result = JSON.parse(res.body)
         result['data']['translations']
       end
   end
