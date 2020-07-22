@@ -5,7 +5,7 @@ configure :test do
       database: 'chatbot_test',
       pool: 5,
       username: 'postgres',
-      host: 'postgres'
+      host: 'postgres',
   }
 end
 
@@ -13,22 +13,22 @@ configure :development do
   set :database, {
       adapter: 'postgresql',
       encoding: 'utf8',
-      database: 'chattbot_development',
+      database: 'chatbot_development',
       pool: 5,
       username: 'postgres',
-      host: 'postgres'
+      host: 'postgres',
   }
 end
 
 configure :production do
-  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://postgres/chatbot_production')
+  db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///postgres/chatbot_production')
 
   set :database, {
-      adapter:  'postgresql',
-      host:     db.host,
-      username: db.user,
-      password: db.password,
-      database: db.path[1..-1],
-      encoding: 'utf8'
+    adapter: 'postgresql',
+    host: db.host,
+    username: db.user,
+    password: db.password,
+    database: db.path[1..-1],
+    encoding: 'utf8',
   }
 end
