@@ -38,17 +38,17 @@ module TranslationModule
   
       def formart_message(message) 
         if @source.nil?
-          text_formart = "Traduzindo o texto: *#{ @text }* para o idioma *#{ @target }* fica *#{message[0]['translatedText']}*"
+          text_formart = "Traduzindo o texto: **#{ @text }** para o idioma **#{ @target }** fica **#{message[0]['translatedText']}**"
         else
-          text_formart = "Traduzindo do idioma *#{ @source }* o texto: *#{ @text }*"
-          text_formart += " para o idioma *#{ @target }* é *#{message[0]['translatedText']}*"
+          text_formart = "Traduzindo do idioma **#{ @source }** o texto: **#{ @text }**"
+          text_formart += " para o idioma **#{ @target }** é **#{message[0]['translatedText']}**"
           text_formart
         end
       end
   
       def validate_params
-        return 'É obrigatório informar um idioma' if @target.nil?
-        return 'É obrigatório informar uma senteça para tradução' if @text.nil?
+        return 'A language is required' if @target.nil?
+        return 'It is required to inform a sentence for translation' if @text.nil?
       end
   
       def create_url
