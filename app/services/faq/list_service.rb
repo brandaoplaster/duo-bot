@@ -21,11 +21,11 @@ module FaqModule
 
       response = "*Perguntas e Respostas* \n\n"
       faqs.each do |f|
-        response += "*#{f.id}* - "
-        response += "*#{f.question}*\n"
-        response += "`#{f.answer}` \n"
+        response += "#{f.id} - "
+        response += "Pergunta: #{f.question}\n"
+        response += "Resposta: #{f.answer} \n"
         f.hashtags.each do |h|
-          response += "_##{h.name}_ "
+          response += "##{h.name} "
         end
         response += "\n\n"
       end
