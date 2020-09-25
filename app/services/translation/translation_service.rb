@@ -17,7 +17,7 @@ module TranslationModule
     end
   
     def call
-      return "Serviço desativado..." if ENV['NOT_ACTIVE_SERVICE'].to_i == 0
+      return "Service disabled..." if ENV['NOT_ACTIVE_SERVICE'].to_i == 0
       result = validate_params
       return "Não conheço este idioma!" if not check_language_exists
       return result if result.class == String
@@ -38,10 +38,11 @@ module TranslationModule
   
       def formart_message(message) 
         if @source.nil?
-          text_formart = "Traduzindo o texto: **#{ @text }** para o idioma **#{ @target }** fica **#{message[0]['translatedText']}**"
+          text_formart = "Traduzindo o texto: [ #{ @text } ] para o idioma [ #{ @target } ]"
+          text_formart += " fica [ #{message[0]['translatedText']} ]"
         else
-          text_formart = "Traduzindo do idioma **#{ @source }** o texto: **#{ @text }**"
-          text_formart += " para o idioma **#{ @target }** é **#{message[0]['translatedText']}**"
+          text_formart = "Traduzindo do idioma [ #{ @source } ] o texto: [ #{ @text } ]"
+          text_formart += " para o idioma [ #{ @target } ] é [ #{message[0]['translatedText']} ]"
           text_formart
         end
       end
